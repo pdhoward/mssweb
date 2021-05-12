@@ -11,7 +11,6 @@
     "@mdx-js/loader": "^1.6.4",
     "@mdx-js/react": "^1.6.4",
     "@next/mdx": "^9.4.2",
-    "cloudinary": "^1.25.1",
     "copee": "^1.0.6",
     "image-size": "^1.0.0",
     "next": "^10.2.0",
