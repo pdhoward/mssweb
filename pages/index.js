@@ -1,209 +1,225 @@
-import Head from 'next/head'
+import Page from 'components/page'
+import DownloadButton from 'components/download-button'
+import heroStyles from 'styles/pages/home/hero.module.css'
 
-export default function Home() {
+import Terminal from 'components/terminal'
+
+
+export default function HomePage({ latestRelease }) {
+ 
+
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <Page>
+      {/**
+       * Hero
+       */}
+      <div className={heroStyles.root}>      
+        <div className={heroStyles.terminal}>
+          <Terminal />
         </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+        <div className={heroStyles.download}>
+          <DownloadButton fixedWidth  />          
+        </div>
+      </div>
+     
 
       <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        .table {
+          overflow-x: auto;
         }
 
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        .table:not(:last-child) > table {
+          margin: 48px 0;
         }
 
-        footer {
+        .table > table {
+          min-width: 500px;
+        }
+
+        .table.large {
+          width: 900px;
+          max-width: 100vw;
+          margin-left: -100px;
+        }
+
+        .table.large > table {
+          width: 900px;
+          max-width: 100%;
+        }
+
+        #content table thead td {
+          color: var(--gray);
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+
+        #content table {
           width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+          table-layout: fixed;
+        }
+
+        #content table p {
+          margin-bottom: 0;
+        }
+
+        #content table p:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+
+        #content table table.params {
           display: flex;
-          justify-content: center;
-          align-items: center;
         }
 
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
+        #content table table.params tr {
           display: flex;
-          justify-content: center;
-          align-items: center;
+          flex-direction: column;
+          width: 100%;
         }
 
-        a {
-          color: inherit;
-          text-decoration: none;
+        #content table table.params tr:not(:last-child) {
+          margin-bottom: 1rem;
         }
 
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
+        #content table table.params tbody td {
+          width: 100%;
+          border-color: transparent;
+          padding: 0;
+          color: var(--gray);
         }
 
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
+        #content table td > * + table.params {
+          margin-top: 24px;
         }
 
-        .title {
+        #content td > table {
           margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
         }
 
-        .title,
-        .description {
+        #content table td {
+          vertical-align: top;
+          border: 1px solid #444;
+          position: relative;
+          word-break: break-word;
+        }
+
+        #content #config-paths-table td {
+          padding: 10px;
+        }
+
+        #content #config-paths-table td:not(:first-child) {
           text-align: center;
+          width: 66.67%;
         }
 
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
+        #content #config-paths-table {
+          color: #fff;
+          margin-top: 0;
         }
 
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        #content #plugins-paths-table td {
+          padding: 10px;
         }
 
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
+        #content #plugins-paths-table td:not(:first-child) {
+          text-align: center;
+          width: 66.67%;
         }
 
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
+        #content #plugins-paths-table {
+          color: #fff;
+          margin-top: 0;
         }
 
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
+        #content td.soon {
+          color: #555;
         }
 
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
+        #content thead td {
+          padding: 10px 24px;
         }
 
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
+        #content tbody td {
+          padding: 24px;
         }
 
-        .logo {
-          height: 1em;
+        #content table.config td:nth-child(1),
+        #content table.api td:nth-child(1) {
+          width: 30%;
+          color: var(--gray);
         }
 
-        @media (max-width: 600px) {
-          .grid {
+        #content table.config td:nth-child(2),
+        #content table.api td:nth-child(2) {
+          width: 23%;
+          color: var(--gray);
+        }
+
+        #content table.config tbody td:first-child {
+          color: var(--fg);
+        }
+
+        #content table.api tbody td:first-child {
+          color: var(--fg);
+        }
+
+        #content table.api > tbody > tr > td:nth-child(2) {
+          width: 13%;
+        }
+
+        #content td > p:first-child {
+          margin-top: 0;
+        }
+
+        @media screen and (max-width: 900px) {
+          .table.large {
             width: 100%;
-            flex-direction: column;
+            max-width: 100%;
+            margin-left: 0;
+          }
+        }
+
+        @media screen and (max-width: 800px) {
+          #content table {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+
+        @media screen and (max-width: 700px) {
+          #content {
+            padding: 20px;
+          }
+
+          #content h2 {
+            margin-top: 0;
+          }
+
+          #content h2:first-child {
+            padding-top: 0;
+          }
+
+          pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow: auto;
+          }
+
+          #content table {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 20px;
+          }
+
+          #content .table-note:after {
+            margin: 15px 0;
+            content: 'Please note: the complete table information is available in bigger resolutions!';
+            display: block;
+            color: var(--gray);
           }
         }
       `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+    </Page>
   )
 }

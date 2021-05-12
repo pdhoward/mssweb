@@ -8,8 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.2.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@mdx-js/loader": "^1.6.4",
+    "@mdx-js/react": "^1.6.4",
+    "@next/mdx": "^9.4.2",
+    "cloudinary": "^1.25.1",
+    "copee": "^1.0.6",
+    "image-size": "^1.0.0",
+    "next": "^10.2.0",
+    "nprogress": "^0.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-gravatar": "^2.6.3",
+    "react-highlighter": "^0.4.3"
   }
 }
