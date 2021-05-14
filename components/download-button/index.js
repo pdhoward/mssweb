@@ -4,7 +4,7 @@ import styles from './download-button.module.css'
 const DownloadButton = () => {  
     return (
       <a 
-        href="https://mssint.com" 
+        href="https://mssdocs.vercel.app/intro/index" 
         className={styles.root}
         target="_blank"
         rel="noopener noreferrer"
